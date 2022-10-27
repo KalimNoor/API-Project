@@ -13,7 +13,8 @@ body {
     background-color: #B7C4CF;
 }
 
-h1 {text-align: center;}
+h1 {text-align: center;
+font-size: 1.5em;}
 
 #index {
     padding: 10px;
@@ -41,7 +42,6 @@ h1 {text-align: center;}
     height: 50px;
     background-color: #F1F1F1;
     margin: 0px;
-    vertical-align: bottom;
 }
 
 form {background-color: #E8E8E8; 
@@ -56,6 +56,13 @@ input[type=text] {
     border: 2px solid rgb(7, 7, 7);
     border-radius: 4px;
   }
+
+  button {
+    background-color: #B7C4CF;
+
+  }
+  
+
 
   img {
     background-color: rgb(56, 56, 56);
