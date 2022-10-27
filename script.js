@@ -12,17 +12,30 @@ function searchShow(show) {
     fetch(`https://api.tvmaze.com/search/shows?q=${show}`)
     .then(response => response.json())
     .then((data) => {
-        console.log(data)
+        const result = data.map(element => element.show.name);
+     
+      
+        renderResults(result);
     })
 
 }
 
 
+function renderResults(results) {
+    const resultList = document.getElementById("result")
+    resultList.innerHTML = ""
+    results.forEach(result => {
+        const element = document.createElement("div");
+        element.innerText = result
+        //append 
+        resultList.appendChild(element)
+    });
+}
 
 
 //search function  in progress
 window.onload = () => {
-    const searchBox = document.getElementById("searchBox")
+    const searchBox = document.getElementById("search")
     searchBox.onkeyup = (event) =>{
 
         searchShow(searchBox.value);
