@@ -9,13 +9,16 @@
 
 
 function searchShow(show) {
-    const url = `https://api.tvmaze.com/search/shows?q=${show}`
-    fetch(url)
+    fetch(`https://api.tvmaze.com/search/shows?q=${show}`)
     .then(response => response.json())
-    .then((jsonData) => {
-        console.log(jsonData)
+    .then((data) => {
+        console.log(data)
     })
+
 }
+
+
+
 
 //search function  in progress
 window.onload = () => {
@@ -25,5 +28,7 @@ window.onload = () => {
         searchShow(searchBox.value);
     }
 }
+
+
 
 
