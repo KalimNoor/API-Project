@@ -1,11 +1,11 @@
-// async function getTvShows(show){
-//     const URL = `https://api.tvmaze.com/search/shows?q=${show}`
-//     const res = await fetch(`${URL}`)
-//     const data = await res.json()
-//     const image = data[0].show.image.medium;
-// }
+async function getTvShows(show){
+    const URL = `https://api.tvmaze.com/search/shows?q=${show}`
+    const res = await fetch(`${URL}`)
+    const data = await res.json()
+    const image = data[0].show.image.medium;
+}
 
-// getTvShows("kingdom");
+getTvShows("kingdom");
 
 
 function searchShow(show) {
@@ -22,13 +22,14 @@ function searchShow(show) {
 
 
 function renderResults(results) {
-    const resultList = document.getElementById("result")
+    const resultList = document.getElementById("search-result")
     resultList.innerHTML = ""
     results.forEach(result => {
         const element = document.createElement("div");
         element.innerText = result
         //append 
         resultList.appendChild(element)
+
     });
 }
 
@@ -41,6 +42,22 @@ window.onload = () => {
         searchShow(searchBox.value);
     }
 }
+
+
+// const cardElement = document.querySelector('card')
+// const main = document.querySelector('main')
+
+// async function getTvShows(show){
+//     const URL = `https://api.tvmaze.com/search/shows?q=${show}`
+//     const res = await fetch(`${URL}`)
+//     const data = await res.json()
+//     const image = data[0].show.image.medium;
+//     console.log(image)
+
+// }
+
+// getTvShows("office");
+
 
 
 
