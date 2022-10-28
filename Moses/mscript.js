@@ -61,7 +61,7 @@ const createElement = (x) => {
 
     let text = document.createElement('div');
     text.className = 'text';
-    text.innerHTML = `<h5>${x.original_title}</h5> <div class="card-panel" style="background:#810000;color:white;"> ${(x.vote_average)} <span id=stars>${getStars(x.vote_average)}</span> </div>`
+    text.innerHTML = `<h5>${x.original_name}</h5> <div class="card-panel" style="background:#810000;color:white;"> ${(x.vote_average)} <span id=stars>${getStars(x.vote_average)}</span> </div>`
     overlay.appendChild(text);
 
     let text2 = document.createElement('div');
