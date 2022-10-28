@@ -61,11 +61,18 @@
 
 const userCardTemplate = document.querySelector("[data-user-template]")
 const userCardContainer = document.querySelector("[data-show-cards-container]")
+const searchShow = document.querySelector("[show-search]")
 
-fetch(`https://api.tvmaze.com/search/shows?q=office`)
+searchShow.addEventListener("input", (e) => {
+    const value = e.target.value 
+    console.log(value)
+})
+
+
+fetch(`https://api.tvmaze.com/search/shows?q=shows`)
 .then(res => res.json())
 .then(data => {
-    data.forEach(show => {
+    
     const card =userCardTemplate.content.cloneNode(true)
     const header = card.querySelector("[data-header")
     const image = card.querySelector("[image-show]")
@@ -83,7 +90,7 @@ fetch(`https://api.tvmaze.com/search/shows?q=office`)
     rating.textContent = showRating
     userCardContainer.append(card)
 
-    })
+   
 })
 
 
