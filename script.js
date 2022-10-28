@@ -63,34 +63,41 @@ const userCardTemplate = document.querySelector("[data-user-template]")
 const userCardContainer = document.querySelector("[data-show-cards-container]")
 const searchShow = document.querySelector("[show-search]")
 
-searchShow.addEventListener("input", (e) => {
-    const value = e.target.value 
-    console.log(value)
-})
 
-
-fetch(`https://api.tvmaze.com/search/shows?q=shows`)
+function getShow(show){
+fetch(`https://api.tvmaze.com/search/shows?q=${show}`)
 .then(res => res.json())
 .then(data => {
     
-    const card =userCardTemplate.content.cloneNode(true)
+    //for each loop which is injecting the data into multiple divs
+   data.forEach(show => {  
+    //creating variables that are holding element class names in the html to use later on in the code 
+    const card =userCardTemplate.content.cloneNode(true)//This line of code is cloning the div section with the data in it  and displaying multiple divs
     const header = card.querySelector("[data-header")
     const image = card.querySelector("[image-show]")
     const rating = card.querySelector("[rating-show]")
 
+    //tapping into 3 pieces of data from the  api and storing them into the variables 
     const showName = data[0].show.name
     const apiImage = data[0].show.image.medium;
     const showRating = data[0].show.rating.average
-   
-    
-    
 
+    //appending the data from api to the div elements in html 
     header.textContent = showName 
     image.setAttribute("src", `${apiImage}`)
     rating.textContent = showRating
-    userCardContainer.append(card)
+
+
+    //appending cards created with data to the empty div in the html 
+    userCardContainer.append(card) 
 
    
-})
+
+     })    
+  })
+}
 
 
+
+
+getShow("office");
