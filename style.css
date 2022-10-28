@@ -68,13 +68,21 @@ input[type=text] {
     border-radius: 4px;
   }
 
-  button {
+button {
     background-color: #B7C4CF;
     border: none;
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
-  }
+}
+
+button:hover {
+    background-color: #9eabb6;
+}
+
+button:active {
+    background-color: #818d97;
+}
   
 label {
     font-size: 1.3em;
