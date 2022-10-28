@@ -102,62 +102,63 @@ const createElement = (x) => {
  }
  */
  
- const getMovies=() =>{
-     fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=${Math.floor(Math.random() * 100) + 1}`)
-     .then(response => response.json())
-     .then(data =>{ 
-         data.results.forEach(element => {
-             createElements(element)
-         });
-         setTimeout(() => {
-             document.getElementById('lds-roller').style = "display:none";
-         }, 10000);
-     
-     });
- 
- }
- 
- //search for a show/movie
- const fetchName=()=>{
-     let value = input.value;
-     fetch(`https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query="${value}`)
-     .then(response => response.json())
-     .then(shows=>{
-         row_body.innerHTML="";
-         shows.results.forEach(element => {
-             createElements(element)
-         });
- 
-      fetch('https://tvjan-tvmaze-v1.p.rapidapi.com/search/shows?q=%7Bquery%7D', options)  
-     })}
- 
- /*fetch('https://tvjan-tvmaze-v1.p.rapidapi.com/search/shows?q=%7Bquery%7D', options)
-     .then(response => response.json())
-     .then(response => console.log(response))
-     .then(shows=>{
-         row_body.innerHTML="";
-         shows.results.forEach(element => {
-             createElements(element)
-         });
-     })
-     .catch(err => console.error(err));
- */
- //search by enter key
-     input.addEventListener("keyup", function(event) {
-         console.log(event.key)
-         if(event.keyCode >= 48 && event.keyCode <= 90) {
-             document.getElementById('key').innerHTML = event.key
-         }        
-         if (event.keyCode === 13) {
-          event.preventDefault();
-          fetchName()
-         }
-       });
- 
-   
- 
- 
-     window.onload = function() {
-         getMovies()
-       };
-       
+ const getShows=() =>{
+    fetch(`https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=5bd6eaa925da2dcd2489390041b06d9d&page=${Math.floor(Math.random() * 100) + 1}`)
+    .then(response => response.json())
+    .then(data =>{ 
+        data.results.forEach(element => {
+            createElements(element)
+        });
+        setTimeout(() => {
+            document.getElementById('lds-roller').style = "display:none";
+        }, 10000);
+    
+    });
+
+};
+
+//search for a show
+const fetchName=()=>{
+    let value = input.value;
+    fetch(`https://api.themoviedb.org/3/search/tv?api_key=5bd6eaa925da2dcd2489390041b06d9d&query="${value}`)
+    .then(response => response.json())
+    .then(shows=>{
+        row_body.innerHTML="";
+        shows.results.forEach(element => {
+            createElements(element)
+        });
+
+    })
+
+};
+
+/*fetch('https://tvjan-tvmaze-v1.p.rapidapi.com/search/shows?q=%7Bquery%7D', options)
+	.then(response => response.json())
+	.then(response => console.log(response))
+    .then(shows=>{
+        row_body.innerHTML="";
+        shows.results.forEach(element => {
+            createElements(element)
+        });
+    })
+	.catch(err => console.error(err));
+*/
+//search by enter key
+    input.addEventListener("keyup", function(event) {
+        console.log(event.key)
+        if(event.keyCode >= 48 && event.keyCode <= 90) {
+            document.getElementById('key').innerHTML = event.key
+        }        
+        if (event.keyCode === 13) {
+         event.preventDefault();
+         fetchName()
+        }
+      });
+
+  
+
+
+    window.onload = function() {
+        getShows()
+      };
+      
